@@ -640,7 +640,19 @@ const $ = id => document.getElementById(id);
 const set = (id,v) => { const e=$(id); if(e) e.textContent=v; };
 const todayStr = () => new Date().toISOString().slice(0,10);
 const X = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-const hi = (s,q) => { if(!q||!s) return X(s); return X(s).replace(new RegExp('('+q.replace(/[.*+?^${}()|[\]\]/g,'\$&')+')','gi'),'<mark>$1</mark>'); };
+const hi = (s,q) => {
+  if(!q||!s) return X(s);
+  const safe=X(s), ql=q.toLowerCase(), sl=safe.toLowerCase();
+  if(sl.indexOf(ql)===-1) return safe;
+  let out='',i=0;
+  while(i<safe.length){
+    if(safe.substring(i,i+ql.length).toLowerCase()===ql){
+      out+='<mark>'+safe.substring(i,i+ql.length)+'</mark>';
+      i+=ql.length;
+    } else { out+=safe[i]; i++; }
+  }
+  return out;
+};
 
 // Format date helpers — defined as functions (hoisted) so always available
 function fmtLong(d) {
