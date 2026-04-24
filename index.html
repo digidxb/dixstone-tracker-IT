@@ -1072,7 +1072,7 @@ window.doReport = () => {
 // ── INIT ──
 document.addEventListener('DOMContentLoaded',()=>{
   $('f-date').valueAsDate=new Date();
-  const mtd=$('mt-date'); if(mtd) mtd.valueAsDate=new Date();
+  const mtd=document.getElementById('mt-date'); if(mtd) mtd.valueAsDate=new Date();
   fetchTasks();
   setInterval(fetchTasks,30000);
 });
@@ -1115,19 +1115,23 @@ async function mtLoad() {
 
 // ── ADD ──
 window.mtAdd = async () => {
-  const task = $('mt-task').value.trim();
-  if(!task) { $('mt-task').focus(); $('mt-task').style.borderColor='var(--danger)'; setTimeout(()=>$('mt-task').style.borderColor='',1500); return; }
-  const notes = $('mt-notes').value.trim();
-  const date  = $('mt-date').value || mtToday();
+  const taskInp = $('mt-task');
+  const task = taskInp ? taskInp.value.trim() : '';
+  if(!task) {
+    if(taskInp){ taskInp.focus(); taskInp.style.borderColor='var(--danger)'; setTimeout(()=>taskInp.style.borderColor='',1500); }
+    return;
+  }
+  const dateInp = $('mt-date');
+  const date = (dateInp && dateInp.value) ? dateInp.value : mtToday();
   try {
-    await fetch(MT_DB+'.json', {
+    const res = await fetch(MT_DB+'.json', {
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ id:Date.now(), task, notes, date, done:false, createdAt:new Date().toISOString() })
+      body: JSON.stringify({ id:Date.now(), task, date, done:false, createdAt:new Date().toISOString() })
     });
-    $('mt-task').value = '';
-    $('mt-notes').value = '';
-    $('mt-date').valueAsDate = new Date();
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    if(taskInp) taskInp.value = '';
+    if(dateInp) dateInp.valueAsDate = new Date();
     await mtLoad();
     toast('✅ Task added!');
   } catch(e) { toast('❌ '+e.message); }
@@ -1177,7 +1181,7 @@ window.mtSaveEdit = async fbKey => {
     await fetch(MT_DB+'/'+fbKey+'.json', {
       method:'PATCH',
       headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ task: inp.value.trim(), date: date?date.value:'' })
+      body: JSON.stringify({ task: inp.value.trim(), date: (date&&date.value)?date.value:'' })
     });
     await mtLoad();
   } catch(e) { toast('❌ '+e.message); }
@@ -1224,7 +1228,11 @@ function mtRender() {
   const fmtD = d => {
     if(!d) return '';
     const [y,m,day]=d.split('-');
-    return parseInt(day)+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1];
+    const dw=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    const dayName = dw[new Date(+y,+m-1,+day).getDay()];
+    const isToday = d === mtToday();
+    return (isToday ? '🔴 Today' : dayName)+', '+parseInt(day)+' '+mo[+m-1];
   };
 
   wrap.innerHTML = list.map(t => `
