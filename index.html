@@ -158,50 +158,54 @@ mark{background:#fff176;color:#1a2030;border-radius:3px;padding:0 2px;font-weigh
 /* TOAST */
 
 /* ── MY TASKS ── */
-.mt-add-row{display:flex;gap:10px;margin-bottom:20px;align-items:flex-end;flex-wrap:wrap;}
-.mt-input{font-family:var(--fb);font-size:13px;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;transition:border-color .2s;}
-.mt-input:focus{border-color:var(--accent);}
-.mt-task-inp{flex:2;min-width:200px;}
-.mt-notes-inp{flex:2;min-width:180px;}
-.mt-date-inp{width:150px;}
-.mt-add-btn{font-family:var(--fh);font-size:13px;font-weight:800;padding:10px 22px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;transition:all .2s;}
-.mt-add-btn:hover{background:var(--navy2);transform:translateY(-1px);}
-/* DATE GROUP */
-.mt-date-group{margin-bottom:20px;}
-.mt-date-hdr{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--navy);padding:8px 14px;background:var(--surface2);border-radius:8px 8px 0 0;border:1px solid var(--border);border-bottom:none;display:flex;align-items:center;gap:8px;}
-.mt-date-hdr .mt-date-lbl{flex:1;}
-.mt-date-hdr .mt-date-count{font-size:11px;font-weight:600;color:var(--muted);}
-.mt-date-today{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;}
-.mt-date-today .mt-date-count{color:rgba(255,255,255,.6);}
-/* TASK ITEM */
-.mt-list{border:1px solid var(--border);border-radius:0 0 10px 10px;overflow:hidden;}
-.mt-item{display:flex;align-items:flex-start;gap:12px;padding:13px 16px;border-bottom:1px solid #f0f3f9;background:#fff;transition:background .15s;}
+.mt-center{display:flex;justify-content:center;padding:20px 16px;}
+.mt-box{width:100%;max-width:560px;}
+.mt-card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:0 4px 24px rgba(26,45,90,.08);overflow:hidden;}
+.mt-card-hdr{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+.mt-card-title{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;display:flex;align-items:center;gap:8px;}
+.mt-card-sub{font-size:11px;color:rgba(255,255,255,.5);margin-top:2px;}
+.mt-card-stats{display:flex;gap:12px;}
+.mt-cs{font-size:11px;font-weight:600;color:rgba(255,255,255,.7);display:flex;align-items:center;gap:4px;}
+.mt-cs span{font-family:var(--fh);font-size:16px;font-weight:800;color:#fff;}
+/* ADD ROW */
+.mt-add-row{padding:16px 18px;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;background:#fafbff;}
+.mt-add-inp{flex:1;font-family:var(--fb);font-size:13px;padding:9px 13px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;transition:border-color .2s;}
+.mt-add-inp:focus{border-color:var(--accent);}
+.mt-add-date{font-family:var(--fm);font-size:12px;padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;background:#fff;color:var(--text);outline:none;width:130px;flex-shrink:0;}
+.mt-add-date:focus{border-color:var(--accent);}
+.mt-add-go{font-family:var(--fh);font-size:13px;font-weight:800;padding:9px 18px;background:var(--navy);color:#fff;border:none;border-radius:8px;cursor:pointer;flex-shrink:0;transition:all .2s;}
+.mt-add-go:hover{background:var(--navy2);}
+/* FILTERS */
+.mt-frow{padding:10px 18px;display:flex;gap:6px;border-bottom:1px solid var(--border);background:#fff;}
+.mt-fb{font-size:11px;font-weight:600;padding:4px 12px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;}
+.mt-fb:hover{border-color:var(--navy);color:var(--navy);}
+.mt-fb.on{background:var(--navy);color:#fff;border-color:var(--navy);}
+/* TASK LIST */
+.mt-list{max-height:420px;overflow-y:auto;}
+.mt-item{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid #f0f3f9;transition:background .12s;}
 .mt-item:last-child{border-bottom:none;}
 .mt-item:hover{background:#f7f9ff;}
-.mt-item.done-item{background:#f9fafb;}
-.mt-check{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:2px;}
-.mt-check.done{background:var(--success);border-color:var(--success);}
-.mt-check.done::after{content:'✓';color:#fff;font-size:11px;font-weight:700;}
-.mt-check:not(.done):hover{border-color:var(--success);background:rgba(5,150,105,.1);}
-.mt-body{flex:1;min-width:0;}
-.mt-task-text{font-size:13px;font-weight:600;color:var(--text);line-height:1.4;}
-.mt-item.done-item .mt-task-text{text-decoration:line-through;color:var(--muted);}
-.mt-notes-text{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5;}
-.mt-item-date{font-family:var(--fm);font-size:10px;color:var(--muted);margin-top:4px;}
-.mt-del{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:15px;padding:2px 6px;border-radius:4px;transition:all .15s;opacity:0;}
-.mt-item:hover .mt-del{opacity:1;}
-.mt-del:hover{color:var(--danger);background:rgba(220,38,38,.08);}
-/* STATS BAR */
-.mt-stats{display:flex;gap:14px;margin-bottom:18px;flex-wrap:wrap;align-items:center;}
-.mt-stat{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:5px;}
-.mt-stat strong{font-weight:700;color:var(--navy);}
-.mt-stat.done-stat strong{color:var(--success);}
-.mt-stat.pend-stat strong{color:var(--warn);}
-.mt-filter-row{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap;}
-.mt-fbtn{font-family:var(--fb);font-size:11px;font-weight:600;padding:5px 13px;border-radius:999px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;}
-.mt-fbtn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-.mt-empty{text-align:center;padding:50px 20px;color:var(--muted);font-size:13px;}
-
+.mt-item.is-done{background:#fafafa;}
+.mt-chk{width:20px;height:20px;border-radius:50%;border:2px solid var(--border);cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+.mt-chk.on{background:var(--success);border-color:var(--success);}
+.mt-chk.on::after{content:'✓';color:#fff;font-size:11px;font-weight:700;}
+.mt-chk:not(.on):hover{border-color:var(--success);}
+.mt-txt{flex:1;font-size:13px;font-weight:500;color:var(--text);min-width:0;}
+.mt-item.is-done .mt-txt{text-decoration:line-through;color:var(--muted);}
+.mt-dt{font-family:var(--fm);font-size:10px;color:var(--muted);white-space:nowrap;margin-left:4px;}
+.mt-actions{display:none;gap:4px;align-items:center;}
+.mt-item:hover .mt-actions{display:flex;}
+.mt-btn{font-size:11px;padding:3px 8px;border-radius:5px;border:1.5px solid var(--border);background:#fff;color:var(--muted);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.mt-btn.edit-btn:hover{color:var(--accent);border-color:var(--accent);}
+.mt-btn.del-btn:hover{color:var(--danger);border-color:var(--danger);}
+/* EDIT INLINE */
+.mt-edit-row{display:none;padding:10px 18px;background:#f0f4ff;border-bottom:1px solid var(--border);gap:8px;align-items:center;}
+.mt-edit-row.open{display:flex;}
+.mt-edit-inp{flex:1;font-family:var(--fb);font-size:13px;padding:7px 11px;border:1.5px solid var(--accent);border-radius:7px;background:#fff;outline:none;}
+.mt-edit-date{font-family:var(--fm);font-size:12px;padding:7px 9px;border:1.5px solid var(--accent);border-radius:7px;background:#fff;outline:none;width:120px;flex-shrink:0;}
+.mt-save-btn{font-family:var(--fh);font-size:12px;font-weight:700;padding:7px 14px;background:var(--accent);color:#fff;border:none;border-radius:7px;cursor:pointer;}
+.mt-cancel-btn{font-family:var(--fh);font-size:12px;font-weight:600;padding:7px 12px;background:transparent;color:var(--muted);border:1.5px solid var(--border);border-radius:7px;cursor:pointer;}
+.mt-empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px;}
 .toast{display:none;position:fixed;bottom:26px;right:26px;background:var(--navy);color:#fff;border-left:4px solid var(--gold);border-radius:10px;padding:13px 18px;font-size:13px;font-family:var(--fh);font-weight:600;box-shadow:0 8px 30px rgba(26,45,90,.25);z-index:999;}
 .toast.show{display:block;animation:fi .3s ease;}
 /* REPORT */
@@ -550,35 +554,46 @@ mark{background:#fff176;color:#1a2030;border-radius:3px;padding:0 2px;font-weigh
 
   <!-- ── MY TASKS PANEL ── -->
   <div class="panel" id="panel-mytasks">
+    <div class="mt-center">
+      <div class="mt-box">
+        <div class="mt-card">
 
-    <!-- ADD ROW -->
-    <div class="mt-add-row">
-      <input type="text" id="mt-task" class="mt-input mt-task-inp" placeholder="✏️  Task description...">
-      <input type="text" id="mt-notes" class="mt-input mt-notes-inp" placeholder="📝  Notes (optional)">
-      <input type="date" id="mt-date" class="mt-input mt-date-inp">
-      <button class="mt-add-btn" onclick="mtAdd()">＋ Add Task</button>
-    </div>
+          <!-- HEADER -->
+          <div class="mt-card-hdr">
+            <div>
+              <div class="mt-card-title">📝 My Tasks</div>
+              <div class="mt-card-sub">Personal daily to-do — just for you</div>
+            </div>
+            <div class="mt-card-stats">
+              <div class="mt-cs"><span id="mt-done-cnt">0</span> Done</div>
+              <div class="mt-cs"><span id="mt-pend-cnt">0</span> Pending</div>
+            </div>
+          </div>
 
-    <!-- STATS + FILTER -->
-    <div class="mt-stats">
-      <div class="mt-stat"><strong id="mt-total">0</strong> Total</div>
-      <div class="mt-stat done-stat"><strong id="mt-done-cnt">0</strong> Done ✅</div>
-      <div class="mt-stat pend-stat"><strong id="mt-pend-cnt">0</strong> Pending</div>
-    </div>
-    <div class="mt-filter-row">
-      <button class="mt-fbtn active" id="mtf-all"     onclick="mtFilter('all',this)">All</button>
-      <button class="mt-fbtn"        id="mtf-pending"  onclick="mtFilter('pending',this)">⏳ Pending</button>
-      <button class="mt-fbtn"        id="mtf-done"     onclick="mtFilter('done',this)">✅ Done</button>
-      <button class="mt-fbtn"        id="mtf-today"    onclick="mtFilter('today',this)">📅 Today</button>
-    </div>
+          <!-- ADD ROW -->
+          <div class="mt-add-row">
+            <input type="text" id="mt-task" class="mt-add-inp" placeholder="+ Add a task...">
+            <input type="date" id="mt-date" class="mt-add-date">
+            <button class="mt-add-go" onclick="mtAdd()">Add</button>
+          </div>
 
-    <!-- TASK LIST -->
-    <div id="mt-list-wrap">
-      <div class="mt-empty">Loading your tasks...</div>
-    </div>
+          <!-- FILTERS -->
+          <div class="mt-frow">
+            <button class="mt-fb on"  id="mtf-all"     onclick="mtFilter('all',this)">All</button>
+            <button class="mt-fb"     id="mtf-pending"  onclick="mtFilter('pending',this)">⏳ Pending</button>
+            <button class="mt-fb"     id="mtf-done"     onclick="mtFilter('done',this)">✅ Done</button>
+            <button class="mt-fb"     id="mtf-today"    onclick="mtFilter('today',this)">📅 Today</button>
+          </div>
 
+          <!-- LIST -->
+          <div class="mt-list" id="mt-list-wrap">
+            <div class="mt-empty">Loading...</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
-
 <!-- EDIT MODAL -->
 <div class="mov" id="edit-modal">
   <div class="mbox">
@@ -1139,11 +1154,40 @@ window.mtDelete = async fbKey => {
   } catch(e) { toast('❌ '+e.message); }
 };
 
+
+// ── INLINE EDIT ──
+window.mtStartEdit = fbKey => {
+  document.querySelectorAll('.mt-edit-row').forEach(r=>r.classList.remove('open'));
+  const row = document.getElementById('mt-edit-'+fbKey);
+  if(row) row.classList.add('open');
+  const inp = document.getElementById('mt-edit-txt-'+fbKey);
+  if(inp) { inp.focus(); inp.select(); }
+};
+
+window.mtCancelEdit = fbKey => {
+  const row = document.getElementById('mt-edit-'+fbKey);
+  if(row) row.classList.remove('open');
+};
+
+window.mtSaveEdit = async fbKey => {
+  const inp  = document.getElementById('mt-edit-txt-'+fbKey);
+  const date = document.getElementById('mt-edit-date-'+fbKey);
+  if(!inp||!inp.value.trim()) return;
+  try {
+    await fetch(MT_DB+'/'+fbKey+'.json', {
+      method:'PATCH',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ task: inp.value.trim(), date: date?date.value:'' })
+    });
+    await mtLoad();
+  } catch(e) { toast('❌ '+e.message); }
+};
+
 // ── FILTER ──
 window.mtFilter = (f, el) => {
   mtActiveFilter = f;
-  document.querySelectorAll('.mt-fbtn').forEach(b=>b.classList.remove('active'));
-  el.classList.add('active');
+  document.querySelectorAll('.mt-fb').forEach(b=>b.classList.remove('on'));
+  el.classList.add('on');
   mtRender();
 };
 
@@ -1151,15 +1195,12 @@ window.mtFilter = (f, el) => {
 function mtRender() {
   const today = mtToday();
   const total = myTasks.length;
-  const doneCnt = myTasks.filter(t=>t.done).length;
-  const pendCnt = total - doneCnt;
-  
-  // Update stats
-  set('mt-total', total);
-  set('mt-done-cnt', doneCnt);
-  set('mt-pend-cnt', pendCnt);
+  const doneCnt  = myTasks.filter(t=>t.done).length;
+  const pendCnt  = total - doneCnt;
+  const set2 = (id,v) => { const e=document.getElementById(id); if(e) e.textContent=v; };
+  set2('mt-done-cnt', doneCnt);
+  set2('mt-pend-cnt', pendCnt);
 
-  // Filter
   let list = myTasks.filter(t => {
     if(mtActiveFilter==='done')    return t.done;
     if(mtActiveFilter==='pending') return !t.done;
@@ -1167,54 +1208,43 @@ function mtRender() {
     return true;
   });
 
-  const wrap = $('mt-list-wrap');
+  const wrap = document.getElementById('mt-list-wrap');
   if(!wrap) return;
 
   if(!list.length) {
     wrap.innerHTML = '<div class="mt-empty">'+
-      (mtActiveFilter==='today' ? '📅 No tasks for today yet — add one above!' :
-       mtActiveFilter==='done'  ? '✅ No completed tasks yet.' :
-       mtActiveFilter==='pending'? '🎉 All tasks done!' :
-       '📝 No tasks yet — add your first task above!')+
+      (mtActiveFilter==='today'   ? '📅 No tasks for today!' :
+       mtActiveFilter==='done'    ? '✅ No completed tasks yet.' :
+       mtActiveFilter==='pending' ? '🎉 All done!' :
+       '📝 No tasks yet — add one above!')+
     '</div>';
     return;
   }
 
-  // Group by date
-  const groups = {};
-  list.forEach(t => {
-    const d = t.date||today;
-    if(!groups[d]) groups[d]=[];
-    groups[d].push(t);
-  });
-  const dates = Object.keys(groups).sort((a,b)=>b>a?1:-1);
+  const fmtD = d => {
+    if(!d) return '';
+    const [y,m,day]=d.split('-');
+    return parseInt(day)+' '+['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][+m-1];
+  };
 
-  wrap.innerHTML = dates.map(date => {
-    const items = groups[date];
-    const isToday = date===today;
-    const doneCntG = items.filter(t=>t.done).length;
-    
-    const rows = items.map(t => `
-      <div class="mt-item ${t.done?'done-item':''}">
-        <div class="mt-check ${t.done?'done':''}" onclick="mtToggle('${t.fbKey}',${t.done})"></div>
-        <div class="mt-body">
-          <div class="mt-task-text">${mtEsc(t.task)}</div>
-          ${t.notes ? `<div class="mt-notes-text">📝 ${mtEsc(t.notes)}</div>` : ''}
-        </div>
-        <button class="mt-del" onclick="mtDelete('${t.fbKey}')" title="Delete">🗑</button>
-      </div>`).join('');
-
-    return `
-      <div class="mt-date-group">
-        <div class="mt-date-hdr ${isToday?'mt-date-today':''}">
-          <span class="mt-date-lbl">${isToday?'🔴 Today — ':'📅 '}${mtFmtFull(date)}</span>
-          <span class="mt-date-count">${doneCntG}/${items.length} done</span>
-        </div>
-        <div class="mt-list">${rows}</div>
-      </div>`;
-  }).join('');
+  wrap.innerHTML = list.map(t => `
+    <div class="mt-item ${t.done?'is-done':''}" id="mt-item-${t.fbKey}">
+      <div class="mt-chk ${t.done?'on':''}" onclick="mtToggle('${t.fbKey}',${t.done})"></div>
+      <div class="mt-txt">${mtEsc(t.task)}</div>
+      ${t.date ? `<div class="mt-dt">${fmtD(t.date)}</div>` : ''}
+      <div class="mt-actions">
+        <button class="mt-btn edit-btn" onclick="mtStartEdit('${t.fbKey}')">✏️ Edit</button>
+        <button class="mt-btn del-btn"  onclick="mtDelete('${t.fbKey}')">🗑</button>
+      </div>
+    </div>
+    <div class="mt-edit-row" id="mt-edit-${t.fbKey}">
+      <input type="text" class="mt-edit-inp" id="mt-edit-txt-${t.fbKey}" value="${mtEsc(t.task)}" placeholder="Edit task...">
+      <input type="date" class="mt-edit-date" id="mt-edit-date-${t.fbKey}" value="${t.date||''}">
+      <button class="mt-save-btn" onclick="mtSaveEdit('${t.fbKey}')">Save</button>
+      <button class="mt-cancel-btn" onclick="mtCancelEdit('${t.fbKey}')">Cancel</button>
+    </div>
+  `).join('');
 }
-
 // Allow Enter key to add task
 document.addEventListener('DOMContentLoaded', ()=>{
   const inp = $('mt-task');
